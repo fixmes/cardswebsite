@@ -15,6 +15,55 @@
           padding: 40px 20px;
       }
 
+      .filter-bar {
+          max-width: 1400px;
+          margin: 0 auto 30px;
+          padding: 0 20px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          align-items: center;
+      }
+
+      .filter-label {
+          font-size: 0.95rem;
+          color: #aaa;
+          margin-right: 10px;
+      }
+
+      .market-filters {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+      }
+
+      .market-btn {
+          padding: 8px 16px;
+          background: #2a2a2a;
+          border: 1px solid #444;
+          border-radius: 20px;
+          color: #fff;
+          font-size: 0.9rem;
+          cursor: pointer;
+          transition: all 0.2s;
+      }
+
+      .market-btn:hover {
+          background: #3a3a3a;
+          border-color: #666;
+      }
+
+      .market-btn.active {
+          background: #6366f1;
+          border-color: #6366f1;
+          box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+      }
+
+      .market-btn.all {
+          background: #1a1a2e;
+          border-color: #6366f1;
+      }
+
       .gallery-grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -46,7 +95,6 @@
 
       .card:hover img { opacity: 0.9; }
 
-      /* ===== MODAL ===== */
       .modal {
           position: fixed; top: 0; left: 0;
           width: 100%; height: 100%;
@@ -75,7 +123,6 @@
 
       .modal.active .modal-content { transform: scale(1); }
 
-      /* ===== 3D SWIPE AREA ===== */
       .modal-left {
           flex: 1;
           display: flex; align-items: center; justify-content: center;
@@ -122,7 +169,6 @@
 
       .flip-card-back { transform: rotateY(180deg); }
 
-      /* Подсказка */
       .swipe-hint {
           position: absolute; bottom: 8px; left: 50%;
           transform: translateX(-50%);
@@ -138,16 +184,94 @@
           to   { opacity: 1; }
       }
 
-      /* ===== RIGHT PANEL ===== */
       .modal-right {
-          flex: 1; padding: 50px;
-          display: flex; flex-direction: column; justify-content: center;
+          flex: 1;
+          padding: 40px 50px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          overflow-y: auto;
       }
 
-      .modal-right h2 { font-size: 2.5rem; margin-bottom: 20px; color: #fff; }
-      .modal-right p  { font-size: 1.2rem; line-height: 1.6; color: #bbb; }
+      .modal-right h2 {
+          font-size: 2.2rem;
+          margin-bottom: 15px;
+          color: #fff;
+      }
 
-      /* ===== NAV BUTTONS ===== */
+      .modal-right p {
+          font-size: 1.1rem;
+          line-height: 1.6;
+          color: #bbb;
+          margin-bottom: 12px;
+      }
+
+      .info-block {
+          margin: 15px 0;
+          padding: 12px 15px;
+          background: rgba(255,255,255,0.05);
+          border-radius: 8px;
+          border-left: 3px solid #6366f1;
+      }
+
+      .info-block.limited {
+          border-left-color: #f59e0b;
+          background: rgba(245, 158, 11, 0.1);
+      }
+
+      .info-label {
+          font-size: 0.85rem;
+          color: #888;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          margin-bottom: 4px;
+      }
+
+      .info-value {
+          font-size: 1.1rem;
+          color: #fff;
+          font-weight: 500;
+      }
+
+      .characters-list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          margin-top: 8px;
+      }
+
+      .character-tag {
+          padding: 4px 12px;
+          background: rgba(99, 102, 241, 0.2);
+          border: 1px solid rgba(99, 102, 241, 0.4);
+          border-radius: 15px;
+          font-size: 0.9rem;
+          color: #c7d2fe;
+      }
+
+      .special-edition {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          margin-top: 5px;
+      }
+
+      .special-edition a {
+          color: #6366f1;
+          text-decoration: none;
+          font-weight: 500;
+          transition: color 0.2s;
+      }
+
+      .special-edition a:hover {
+          color: #818cf8;
+          text-decoration: underline;
+      }
+
+      .special-edition .no-link {
+          color: #fff;
+      }
+
       .nav-btn {
           position: absolute; top: 50%;
           transform: translateY(-50%);
@@ -176,7 +300,6 @@
 
       .close-btn:hover { color: #ff4c4c; }
 
-      /* ===== ANIMATIONS ===== */
       @keyframes slideNext {
           0%   { opacity: 0; transform: translateX(50px); }
           100% { opacity: 1; transform: translateX(0); }
@@ -189,9 +312,23 @@
       .anim-next { animation: slideNext 0.4s forwards; }
       .anim-prev { animation: slidePrev 0.4s forwards; }
 
-      /* ===== RESPONSIVE ===== */
+      .empty-state {
+          text-align: center;
+          padding: 60px 20px;
+          color: #666;
+          grid-column: 1 / -1;
+      }
+
+      .empty-state svg {
+          width: 80px;
+          height: 80px;
+          margin-bottom: 20px;
+          opacity: 0.3;
+      }
+
       @media (max-width: 900px) {
           body { padding: 20px 10px; }
+          .filter-bar { padding: 0 10px; margin-bottom: 20px; }
           .gallery-grid {
               grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
               gap: 15px;
@@ -215,10 +352,14 @@
           .next-btn { right: 10px; }
           .close-btn { top: 10px; right: 15px; font-size: 30px; }
       }
-      
   </style>
 </head>
 <body>
+
+<div class="filter-bar" id="filterBar">
+  <span class="filter-label">Фильтр по маркету:</span>
+  <div class="market-filters" id="marketFilters"></div>
+</div>
 
 <div class="gallery-grid" id="gallery"></div>
 
@@ -237,10 +378,13 @@
           <img id="modal-img-back" src="" alt="Back">
         </div>
       </div>
+      <div class="swipe-hint">← Свайпайте для просмотра обратной стороны →</div>
     </div>
     <div class="modal-right">
       <h2 id="modal-title"></h2>
       <p id="modal-desc"></p>
+
+      <div id="card-details"></div>
     </div>
   </div>
 
@@ -249,101 +393,57 @@
 </div>
 
 <script>
-    /* ========== DATA ========== */
     const cardsData = [
         {
             image: 'cards/image_2026-05-20_23-17-18.png',
             backImage: 'cards/image_2026-05-20_23-17-18 (2).png',
             title: 'Карточка 1',
-            desc: 'Описание первой карточки'
+            desc: 'Описание первой карточки',
+            market: 'стимис',
+            edition: 500,
+            characters: ['Энси', 'раф'],
+            eventLink: 'https://cerf.wtf'
         },
         {
             image: 'cards/image_2026-05-20_18-00-09 (2).png',
             backImage: 'cards/back_2.png',
             title: 'Карточка 2',
-            desc: 'Описание второй карточки'
+            desc: 'Описание второй карточки',
+            market: 'гог',
+            edition: 1000,
+            characters: ['Персонаж В'],
+            eventLink: null
         },
         {
             image: 'cards/image_2026-05-20_18-00-09 (4).png',
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet'
+            title: 'Карточка 3',
+            desc: 'пиздец',
+            market: 'гог',
+            edition: 250,
+            characters: ['мяясм', 'ямс'],
+            eventLink: 'https://cerf.wtf'
         },
         {
             image: 'cards/image_2026-05-20_18-00-09 (5).png',
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet'
+            title: 'Карточка 4',
+            desc: 'Обычная карточка',
+            market: 'гог',
+            characters: ['ыва'],
+            eventLink: null
         },
         {
             image: 'cards/image_2026-05-20_18-00-09 (6).png',
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet'
-        },
-        {
-            image: 'cards/image_2026-05-20_18-00-09 (7).png',
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet'
-        },
-        {
-            image: 'cards/image_2026-05-20_18-00-10.png',
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet'
-        },
-        {
-            image: 'cards/image_2026-05-20_18-00-10 (2).png',
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet'
-        },
-        {
-            image: 'cards/image_2026-05-20_18-00-10 (3).png',
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet'
-        },
-        {
-            image: 'cards/image_2026-05-20_18-00-10 (4).png',
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet'
-        },
-        {
-            image: 'cards/image_2026-05-20_18-00-10 (5).png',
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet'
-        },
-        {
-            image: 'cards/image_2026-05-20_18-00-10 (6).png',
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet'
-        },
-        {
-            image: 'cards/image_2026-05-20_18-00-10 (7).png',
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet'
-        },
-        {
-            image: 'cards/image_2026-05-20_18-00-10 (8).png',
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet'
-        },
-        {
-            image: 'cards/image_2026-05-20_18-00-11.png',
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet'
-        },
-        {
-            image: 'cards/image_2026-05-20_18-00-11 (2).png',
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet'
-        },
-        {
-            image: 'cards/image_2026-05-20_18-00-11 (3).png',
-            title: 'Lorem ipsum dolor sit amet',
-            desc: 'Lorem ipsum dolor sit amet'
+            title: 'Карточка 5',
+            desc: 'ыыыыыы',
+            market: 'Мегамаркет озон',
+            edition: 100,
+            characters: ['хуй1', 'хуй2'],
+            eventLink: 'https://cerf.wtf'
         },
     ];
 
-    // Заглушка для демо
     cardsData.forEach(c => { if (!c.backImage) c.backImage = c.image; });
 
-    /* ========== ELEMENTS ========== */
     const gallery      = document.getElementById('gallery');
     const modal        = document.getElementById('modal');
     const overlay      = document.getElementById('overlay');
@@ -357,20 +457,123 @@
     const modalContent = document.getElementById('modal-content');
     const flipCard     = document.getElementById('flipCard');
     const modalLeft    = document.getElementById('modal-left');
-    const swipeHint    = document.getElementById('swipeHint');
+    const marketFilters = document.getElementById('marketFilters');
+    const cardDetails  = document.getElementById('card-details');
 
     let currentIndex = 0;
+    let currentFilter = 'all';
+    let filteredCards = [...cardsData];
 
-    /* ========== GRID ========== */
-    cardsData.forEach((card, i) => {
-        const el = document.createElement('div');
-        el.classList.add('card');
-        el.innerHTML = `<img src="${card.image}" alt="${card.title}" loading="lazy">`;
-        el.addEventListener('click', () => openModal(i));
-        gallery.appendChild(el);
-    });
+    function getUniqueMarkets() {
+        const markets = new Set();
+        cardsData.forEach(card => {
+            if (card.market) markets.add(card.market);
+        });
+        return Array.from(markets).sort();
+    }
 
-    /* ========== MODAL ========== */
+    function renderMarketFilters() {
+        const markets = getUniqueMarkets();
+        marketFilters.innerHTML = '';
+
+        const allBtn = document.createElement('button');
+        allBtn.className = 'market-btn all active';
+        allBtn.textContent = 'Все';
+        allBtn.dataset.market = 'all';
+        allBtn.addEventListener('click', () => applyFilter('all'));
+        marketFilters.appendChild(allBtn);
+
+        markets.forEach(market => {
+            const btn = document.createElement('button');
+            btn.className = 'market-btn';
+            btn.textContent = market;
+            btn.dataset.market = market;
+            btn.addEventListener('click', () => applyFilter(market));
+            marketFilters.appendChild(btn);
+        });
+    }
+
+    function applyFilter(market) {
+        currentFilter = market;
+
+        document.querySelectorAll('.market-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.market === market);
+        });
+
+        if (market === 'all') {
+            filteredCards = [...cardsData];
+        } else {
+            filteredCards = cardsData.filter(card => card.market === market);
+        }
+
+        renderGallery();
+
+        if (modal.classList.contains('active') && filteredCards.length > 0) {
+            const currentCard = cardsData[currentIndex];
+            const isInFilter = filteredCards.includes(currentCard);
+            if (!isInFilter) {
+                currentIndex = cardsData.indexOf(filteredCards[0]);
+                updateModalContent();
+            }
+        }
+    }
+
+    function renderGallery() {
+        gallery.innerHTML = '';
+
+        filteredCards.forEach((card) => {
+            const originalIndex = cardsData.indexOf(card);
+            const el = document.createElement('div');
+            el.classList.add('card');
+            el.innerHTML = `<img src="${card.image}" alt="${card.title}" loading="lazy">`;
+            el.addEventListener('click', () => openModal(originalIndex));
+            gallery.appendChild(el);
+        });
+    }
+
+    function formatCardDetails(card) {
+        let html = '';
+
+        if (card.edition !== undefined && card.edition !== null) {
+            html += `
+                <div class="info-block limited">
+                    <div class="info-label">Статус выпуска</div>
+                    <div class="info-value">
+                        Лимитированная <span style="color:#888;font-weight:normal">${card.edition} шт.</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        if (card.market) {
+            const marketContent = card.eventLink
+                ? `<a href="${card.eventLink}" target="_blank" rel="noopener">${card.market}</a>`
+                : `<span class="no-link">${card.market}</span>`;
+
+            html += `
+                <div class="info-block">
+                    <div class="info-label">Специальное издание</div>
+                    <div class="special-edition">
+                        ${marketContent}
+                    </div>
+                </div>
+            `;
+        }
+
+        if (card.characters && card.characters.length > 0) {
+            html += `
+                <div class="info-block">
+                    <div class="info-label">Персонажи</div>
+                    <div class="characters-list">
+                        ${card.characters.map(char => `<span class="character-tag">${char}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        return html;
+    }
+
     function openModal(index) {
         currentIndex = index;
         updateModalContent();
@@ -396,16 +599,22 @@
         modalTitle.textContent = data.title;
         modalDesc.textContent  = data.desc;
 
+        cardDetails.innerHTML = formatCardDetails(data);
+
         resetCard();
     }
 
     function showNext() {
-        currentIndex = (currentIndex + 1) % cardsData.length;
+        const currentFilteredIndex = filteredCards.indexOf(cardsData[currentIndex]);
+        const nextFilteredCard = filteredCards[(currentFilteredIndex + 1) % filteredCards.length];
+        currentIndex = cardsData.indexOf(nextFilteredCard);
         updateModalContent('anim-next');
     }
 
     function showPrev() {
-        currentIndex = (currentIndex - 1 + cardsData.length) % cardsData.length;
+        const currentFilteredIndex = filteredCards.indexOf(cardsData[currentIndex]);
+        const prevFilteredCard = filteredCards[(currentFilteredIndex - 1 + filteredCards.length) % filteredCards.length];
+        currentIndex = cardsData.indexOf(prevFilteredCard);
         updateModalContent('anim-prev');
     }
 
@@ -420,25 +629,19 @@
         if (e.key === 'ArrowRight') showNext();
         if (e.key === 'ArrowLeft')  showPrev();
     });
-    /* ==============================================
-       3D SWIPE — только вращение (без смещения)
-       ============================================== */
 
-    // Параметры физики
-    const ROTATION_FACTOR = 0.45;   // градусов на пиксель смещения
-    const MAX_ROTATE_X   = 35;      // макс наклон вверх/вниз
-    const MAX_ROTATE_Y   = 180;     // макс переворот (полный разворот)
-    const FRICTION        = 0.92;   // затухание инерции
-    const VELOCITY_CUTOFF = 0.25;   // порог скорости для начала возврата
+    const ROTATION_FACTOR = 0.45;
+    const MAX_ROTATE_X   = 35;
+    const MAX_ROTATE_Y   = 180;
+    const FRICTION        = 0.92;
+    const VELOCITY_CUTOFF = 0.25;
 
     let dragging  = false;
     let startX = 0, startY = 0;
-    let velX = 0, velY = 0;         // скорость вращения (градусы/кадр)
+    let velX = 0, velY = 0;
     let lastPtX = 0, lastPtY = 0;
     let lastTime = 0;
     let rafId = null;
-
-    // Текущее состояние вращения
     let state = { rx: 0, ry: 0 };
 
     function resetCard() {
@@ -450,22 +653,17 @@
         velY = 0;
     }
 
-    // Применяем только вращение (без translate!)
     function setTransform(rx, ry) {
         flipCard.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
     }
 
-    /* --- Pointer DOWN --- */
     function onDown(e) {
         if (e.target.closest('.nav-btn, .close-btn')) return;
         e.preventDefault();
-
         dragging = true;
         flipCard.classList.add('grabbing');
         flipCard.classList.remove('returning');
-
         if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
-
         const pt = e.touches ? e.touches[0] : e;
         startX   = pt.clientX;
         startY   = pt.clientY;
@@ -476,43 +674,28 @@
         velY = 0;
     }
 
-    /* --- Pointer MOVE --- */
     function onMove(e) {
         if (!dragging) return;
         e.preventDefault();
-
         const pt = e.touches ? e.touches[0] : e;
         const now = performance.now();
         const dt  = Math.max(now - lastTime, 1);
-
         const dx = pt.clientX - startX;
         const dy = pt.clientY - startY;
-
         const ddx = pt.clientX - lastPtX;
         const ddy = pt.clientY - lastPtY;
-
-        // Скорость вращения (градусы за кадр)
         velX = (ddx / dt) * ROTATION_FACTOR * 16;
         velY = (ddy / dt) * ROTATION_FACTOR * 16;
-
-        // Вращение пропорционально смещению от точки касания
-        // Свайп влево-вправо → rotateY (переворот)
-        // Свайп вверх-вниз  → rotateX (наклон)
         state.ry = dx * ROTATION_FACTOR;
         state.rx = -dy * ROTATION_FACTOR;
-
-        // Ограничения углов
         state.rx = Math.max(-MAX_ROTATE_X, Math.min(MAX_ROTATE_X, state.rx));
         state.ry = Math.max(-MAX_ROTATE_Y, Math.min(MAX_ROTATE_Y, state.ry));
-
         setTransform(state.rx, state.ry);
-
         lastPtX  = pt.clientX;
         lastPtY  = pt.clientY;
         lastTime = now;
     }
 
-    /* --- Pointer UP --- */
     function onUp() {
         if (!dragging) return;
         dragging = false;
@@ -520,44 +703,37 @@
         rafId = requestAnimationFrame(inertiaLoop);
     }
 
-    /* --- Инерция + плавный возврат --- */
     function inertiaLoop() {
-        // Затухание скорости
         velX *= FRICTION;
         velY *= FRICTION;
-
-        // Применяем инерцию к вращению
         state.ry += velX;
         state.rx -= velY;
-
         const speed = Math.sqrt(velX * velX + velY * velY);
-
-        // Если скорость упала — начинаем плавный возврат в исходное положение
         if (speed < VELOCITY_CUTOFF) {
             flipCard.classList.add('returning');
             state = { rx: 0, ry: 0 };
             setTransform(0, 0);
             return;
         }
-
-        // Ограничиваем углы во время инерции
         state.rx = Math.max(-MAX_ROTATE_X * 1.5, Math.min(MAX_ROTATE_X * 1.5, state.rx));
         state.ry = Math.max(-MAX_ROTATE_Y, Math.min(MAX_ROTATE_Y, state.ry));
-
         setTransform(state.rx, state.ry);
         rafId = requestAnimationFrame(inertiaLoop);
     }
 
-    // ===== События =====
-    // Mouse
     modalLeft.addEventListener('mousedown',  onDown);
     document.addEventListener('mousemove',   onMove);
     document.addEventListener('mouseup',     onUp);
-
-    // Touch
     modalLeft.addEventListener('touchstart', onDown, { passive: false });
     modalLeft.addEventListener('touchmove',  onMove, { passive: false });
     modalLeft.addEventListener('touchend',   onUp);
+
+    function init() {
+        renderMarketFilters();
+        renderGallery();
+    }
+
+    init();
 </script>
 </body>
 </html>
